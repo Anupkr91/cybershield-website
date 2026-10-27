@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CyberShield | Cyber Security</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+#particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+nav, main, footer {
+    position: relative;
+    z-index: 1;
+}
+    background: #050816;
+    color: white;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 8%;
+    border-bottom: 1px solid #1b3150;
+    background: #071020;
+    position: relative;
+    z-index: 5;
+}
+
+.logo {
+    color: #42d9ff;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav a {
+    color: #c8d9f5;
+    text-decoration: none;
+    margin-left: 22px;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #42d9ff;
+}
+
+.hero {
+    min-height: 590px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 65px 8%;
+    position: relative;
+}
+
+.hero-text {
+    max-width: 590px;
+    z-index: 2;
+}
+
+.badge {
+    display: inline-block;
+    color: #42d9ff;
+    border: 1px solid #235b7d;
+    border-radius: 30px;
+    padding: 9px 15px;
+    margin-bottom: 24px;
+    background: #0b2038;
+}
+
+h1 {
+    font-size: clamp(38px, 5vw, 65px);
+    line-height: 1.12;
+    margin-bottom: 22px;
+}
+
+h1 span {
+    color: #42d9ff;
+    text-shadow: 0 0 25px #168bff77;
+}
+
+.hero-text p {
+    color: #aabbd4;
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 14px 23px;
+    border-radius: 8px;
+    background: #168cff;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #42d9ff;
+    color: #04101f;
+}
+
+.scene {
+    width: 320px;
+    height: 320px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    perspective: 800px;
+}
+
+.shield {
+    width: 190px;
+    height: 220px;
+    position: relative;
+    display: grid;
+    place-items: center;
+    font-size: 105px;
+    background: linear-gradient(145deg, #123cff, #42d9ff);
+    clip-path: polygon(50% 0%, 95% 18%, 88% 68%, 50% 100%, 12% 68%, 5% 18%);
+    filter: drop-shadow(0 0 18px #168cff);
+    animation: float 3s ease-in-out infinite, shieldRotate 6s ease-in-out infinite;
+    transform-style: preserve-3d;
+}
+
+@keyframes shieldRotate {
+    0%, 100% { rotate: Y -12deg; }
+    50% { rotate: Y 12deg; }
+}
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotateY(-10deg); }
+    50% { transform: translateY(-15px) rotateY(10deg); }
+}
+
+.orbit {
+    position: absolute;
+    width: 290px;
+    height: 290px;
+    border: 2px solid #42d9ff55;
+    border-radius: 50%;
+    animation: rotate 8s linear infinite;
+}
+
+.orbit::before {
+    content: "✦";
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    color: #42d9ff;
+    font-size: 25px;
+}
+
+@keyframes rotate {
+    to { transform: rotate(360deg); }
+}
+
+section {
+    padding: 70px 8%;
+    position: relative;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+
+.section-title span {
+    color: #42d9ff;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 22px;
+}
+
+.card {
+background: rgba(15, 35, 65, 0.55);
+border: 1px solid rgba(66, 217, 255, 0.3);
+padding: 28px;
+border-radius: 18px;
+backdrop-filter: blur(14px);
+-webkit-backdrop-filter: blur(14px);
+box-shadow: 0 8px 32px rgba(0, 140, 255, 0.08);
+transition: transform 0.3s ease, border-color 0.3s ease,
+box-shadow 0.3s ease;
+}
+
+.stat-number {
+    font-size: 42px;
+    font-weight: bold;
+    color: #42d9ff;
+    margin: 15px 0;
+    text-shadow: 0 0 18px #168cff88;
+}
+
+.stat-card {
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #42d9ff, transparent);
+    animation: scanLine 3s linear infinite;
+}
+
+@keyframes scanLine {
+    to {
+        left: 100%;
+    }
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: #42d9ff;
+    box-shadow:
+        0 0 15px rgba(66, 217, 255, 0.25),
+        0 15px 40px rgba(22, 140, 255, 0.2);
+    background: rgba(20, 50, 85, 0.75);
+}
+.card .icon {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    color: #42d9ff;
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: #aabbd4;
+    line-height: 1.7;
+}
+
+.scanner {
+    max-width: 700px;
+    margin: auto;
+    background: #0b1529;
+    border: 1px solid #1b3150;
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.scanner input {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    background: #050816;
+    color: white;
+    border: 1px solid #235b7d;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+#result {
+    margin-top: 20px;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #aabbd4;
+    border-top: 1px solid #1b3150;
+}
+
+@media (max-width: 700px) {
+    nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav a {
+        margin: 0 7px;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 45px;
+    }
+
+    .scene {
+        width: 280px;
+        height: 280px;
+    }
+.scene {
+    position: relative;
+}
+
+.scene::before {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    background: #168cff;
+    border-radius: 50%;
+    filter: blur(70px);
+    opacity: 0.35;
+    animation: glowPulse 3s ease-in-out infinite;
+    z-index: -1;
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        opacity: 0.2;
+        transform: scale(0.85);
+    }
+    50% {
+        opacity: 0.55;
+        transform: scale(1.2);
+    }
+}
+
+    .section-title {
+        font-size: 29px;
+    }
+}
+/* MOBILE RESPONSIVE DESIGN */
+
+@media (max-width: 600px) {
+    nav {
+        padding: 18px 5%;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 6px;
+        font-size: 12px;
+    }
+
+    .hero {
+        min-height: auto;
+        padding: 45px 6%;
+        gap: 35px;
+    }
+
+    .hero-text {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 38px;
+    }
+
+    .hero-text p {
+        font-size: 15px;
+    }
+
+    .scene {
+        transform: scale(0.85);
+        margin: -15px 0;
+    }
+
+    section {
+        padding: 45px 6%;
+    }
+
+    .section-title {
+        font-size: 28px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        padding: 22px;
+    }
+
+    .stat-number {
+        font-size: 36px;
+    }
+
+    .scanner {
+        padding: 20px;
+    }
+
+    .scanner input {
+        font-size: 14px;
+    }
+
+    footer {
+        font-size: 13px;
+        line-height: 1.8;
+    }
+}
+
+</style>
+</head>
+
+<body>
+<canvas id="particles"></canvas>
+
+<nav>
+    <div class="logo">🛡️ CyberShield</div>
+    <div>
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#scanner">URL Scanner</a>
+        <a href="#about">About</a>
+    </div>
+</nav>
+
+<main>
+<section class="hero" id="home">
+    <div class="hero-text">
+        <div class="badge">🛡️ YOUR DIGITAL SAFETY MATTERS</div>
+
+        <h1>Welcome to <span>CyberShield</span></h1>
+
+        <p>
+            Explore a smarter way to understand cyber security.
+            Learn about suspicious links, phishing messages,
+            and simple ways to protect your digital life.
+        </p>
+
+        <a class="btn" href="#services">Explore Services →</a>
+    </div>
+
+    <div class="scene">
+        <div class="orbit"></div>
+        <div class="shield">🛡️</div>
+    </div>
+</section>
+
+<section id="dashboard">
+    <h2 class="section-title">Live Security <span>Dashboard</span></h2>
+
+    <div class="cards">
+        <div class="card stat-card">
+            <div class="icon">🔗</div>
+            <h3>URLs Inspected</h3>
+            <div class="stat-number" data-target="1250">0</div>
+            <p>Demo statistic</p>
+        </div>
+
+        <div class="card stat-card">
+            <div class="icon">🎣</div>
+            <h3>Threats Identified</h3>
+            <div class="stat-number" data-target="875">0</div>
+            <p>Demo statistic</p>
+        </div>
+
+        <div class="card stat-card">
+            <div class="icon">🛡️</div>
+            <h3>Protection Score</h3>
+            <div class="stat-number" data-target="98">0</div>
+            <p>Illustrative score out of 100</p>
+        </div>
+    </div>
+
+    <p style="text-align:center;color:#8295b3;margin-top:20px;">
+        Note: These are sample demo values, not real security scan results.
+    </p>
+</section>
+
+<section id="services">
+    <h2 class="section-title">Our <span>Services</span></h2>
+
+    <div class="cards">
+        <div class="card">
+            <div class="icon">🔗</div>
+            <h3>URL Safety</h3>
+            <p>Learn to identify suspicious links and risky URL patterns.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🎣</div>
+            <h3>Phishing Awareness</h3>
+            <p>Recognize messages that request passwords, OTPs, or sensitive information.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🔐</div>
+            <h3>Digital Protection</h3>
+            <p>Discover practical tips for safer passwords and online accounts.</p>
+        </div>
+    </div>
+</section>
+
+<section id="scanner">
+    <h2 class="section-title">URL <span>Inspector</span></h2>
+
+    <div class="scanner">
+        <p>Enter a URL to check for some common warning signs.</p>
+
+        <input
+            type="text"
+            id="urlInput"
+            placeholder="https://example.com"
+        >
+
+        <button class="btn" onclick="inspectURL()">
+            Inspect URL
+        </button>
+
+        <div id="result"></div>
+
+        <p style="margin-top:15px;color:#8295b3;font-size:13px;">
+            Educational demo only. This tool cannot confirm whether
+            a website is safe or malicious.
+        </p>
+    </div>
+</section>
+
+<section id="about">
+    <h2 class="section-title">About <span>CyberShield</span></h2>
+
+    <div class="card">
+        <p>
+            CyberShield is an educational cyber security website
+            designed to spread awareness about online threats and
+            encourage safer internet habits.
+        </p>
+    </div>
+</section>
+</main>
+
+<footer>
+    © 2026 CyberShield | Learn. Detect. Stay Protected.
+</footer>
+
+<script>
+function inspectURL() {
+    const input = document.getElementById("urlInput").value.trim();
+    const result = document.getElementById("result");
+
+    if (!input) {
+        result.textContent = "Please enter a URL first.";
+        result.style.color = "#ffcc66";
+        return;
+    }
+
+    let url;
+
+    try {
+        url = new URL(
+            input.includes("://") ? input : "https://" + input
+        );
+    } catch {
+        result.textContent = "Please enter a valid URL format.";
+        result.style.color = "#ff7272";
+        return;
+    }
+
+    const warnings = [];
+
+    if (url.protocol !== "https:") {
+        warnings.push("The URL does not use HTTPS.");
+    }
+
+    if (url.username || url.password) {
+        warnings.push("The URL contains embedded login information.");
+    }
+
+    if (url.hostname.startsWith("xn--") || url.hostname.includes(".xn--")) {
+        warnings.push("The domain uses an internationalized domain format.");
+    }
+
+    if (url.hostname.split(".").length > 4) {
+        warnings.push("The hostname contains many subdomains.");
+    }
+
+    if (warnings.length > 0) {
+        result.innerHTML =
+            "<strong>⚠️ Warning signs found:</strong><br>" +
+            warnings.map(w => "• " + w).join("<br>");
+        result.style.color = "#ffcc66";
+    } else {
+        result.textContent =
+            "No warning signs detected by these basic checks. This does not guarantee the URL is safe.";
+        result.style.color = "#42d9ff";
+    }
+}
+</script>
+<script>
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+let particles = [];
+
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    particles = [];
+
+    const count = Math.min(
+        80,
+        Math.floor((canvas.width * canvas.height) / 15000)
+    );
+
+    for (let i = 0; i < count; i++) {
+        particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 2 + 1,
+            speed: Math.random() * 0.6 + 0.2
+        });
+    }
+}
+
+function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    particles.forEach(p => {
+        p.y -= p.speed;
+
+        if (p.y < 0) {
+            p.y = canvas.height;
+            p.x = Math.random() * canvas.width;
+        }
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(66, 217, 255, 0.8)";
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = "#42d9ff";
+        ctx.fill();
+    });
+
+    ctx.shadowBlur = 0;
+    requestAnimationFrame(animateParticles);
+}
+
+window.addEventListener("resize", resizeCanvas);
+
+resizeCanvas();
+animateParticles();
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const counters = document.querySelectorAll(".stat-number");
+
+    counters.forEach(counter => {
+        const target = Number(counter.dataset.target);
+        const duration = 1800;
+        const startTime = performance.now();
+
+        function updateCounter(currentTime) {
+            const progress = Math.min(
+                (currentTime - startTime) / duration,
+                1
+            );
+
+            const easedProgress = 1 - Math.pow(1 - progress, 3);
+            counter.textContent = Math.floor(target * easedProgress);
+
+            if (progress < 1) {
+                requestAnimationFrame(updateCounter);
+            } else {
+                counter.textContent = target;
+            }
+        }
+
+        requestAnimationFrame(updateCounter);
+    });
+});
+</script>
+</body>
+</html>
